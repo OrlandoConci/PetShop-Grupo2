@@ -1,17 +1,43 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Contact</title>
-  </head>
-  <body>
-    <header></header>
-    <main>
-      <div id="form"></div>
-      <div id="location"></div>
-    </main>
-    <footer></footer>
-    <script src="./assets/JS/index.js" type="module"></script>
-  </body>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact</title>
+</head>
+
+<body>
+  <header></header>
+  <main>
+    <form>
+      <div id="form" class="flex flex-col">
+        <label for="name">
+          <input type="text" name="name" id="" placeholder="Your name" />
+        </label>
+        <label for="lastName">
+          <input type="text" name="lastName" id="" placeholder="Your last name" />
+        </label>
+        <label for="afair">
+          <input type="text" name="afair" id="" placeholder="Afair" />
+        </label>
+        <label for="message">
+          <textarea name="message" id="" cols="30" rows="5" placeholder="Message"></textarea>
+        </label>
+        <label for="email">
+          <input type="email" name="email" id="" placeholder="Enter your email" />
+        </label>
+        <label for="phone">
+          <input type="tel" name="phone" id="" placeholder="Enter your number" />
+        </label>
+        <button id="btn-send" type="button">Sumbit</button>
+      </div>
+    </form>
+    <div id="paragraph"></div>
+    <div id="location"></div>
+  </main>
+  <footer></footer>
+  <script src="./assets/JS/contact.js" type="module"></script>
+</body>
+
 </html>
