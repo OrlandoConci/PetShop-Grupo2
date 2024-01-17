@@ -1,3 +1,4 @@
+
 const urlApi = "https://moviestack.onrender.com/api/petshop";
 
 export let products = [];
@@ -10,12 +11,23 @@ await fetch(urlApi)
 })
 .catch(err => console.log(err));
 
-
  console.log(products)
 
+// Filtro
+const $ingresoFilter = document.getElementById("filter")
+const $contenedorFilter = document.getElementById("contenedorFilter")
 
+$ingresoFilter.addEventListener("input", (e) => {
+    let articulosFiltrados = busquedaTexto(products, e.target.value)
+    console.log(articulosFiltrados)
+    // crearArticles(articulosFiltrados, $contenedorFilter)
+})
 
+function busquedaTexto (products, textoIngresado) {
+    return products.filter( articulo => articulo.producto.toLowerCase().includes(textoIngresado.toLowerCase()))
+}
  
+
 let checkout = document.getElementById("checkout");
 let checdiv = document.getElementById("chec-div");
 let flag3 = false;
@@ -65,30 +77,3 @@ window.addEventListener('click', (event) => {
         isDropdownOpen = false;
     }
 });
-
-
-
-// <<<<<<< HEAD
-// =======
-// fetch (urlApi)
-//     .then(response => response.json())
-//     .then(products => {
-//         const $ingresoFilter = document.getElementById("filter")
-//         const $contenedorFilter = document.getElementById("contenedorFilter")
-
-//         $ingresoFilter.addEventListener("input", (e) => {
-//             let articulosFiltrados = busquedaTexto(products, e.target.value)
-//             console.log(articulosFiltrados)
-//             // crearArticles(articulosFiltrados, $contenedorFilter)
-//         })
-
-//         function busquedaTexto (products, textoIngresado) {
-//             return products.filter( articulo => articulo.producto.toLowerCase().includes(textoIngresado.toLowerCase()))
-//         }
-//     })
-//     .catch(err => console.log(err))
-
-
-
-
-// >>>>>>> 96c52ddf3b0b06244b8b39982ed0f630dc5f206d
