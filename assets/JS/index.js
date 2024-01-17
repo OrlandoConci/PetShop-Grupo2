@@ -29,6 +29,23 @@ function busquedaTexto (products, textoIngresado) {
  
 // ------------Fin Filtro------------
 
+//............. Nav tabs .............
+
+const targets = document.querySelectorAll('[data-target]')
+const content = document.querySelectorAll('[data-content]')
+
+targets.forEach(target => {
+	target.addEventListener('click', () => {
+		content.forEach(c => {
+			c.classList.remove('active')
+		})
+		const t = document.querySelector(target.dataset.target)
+		t.classList.add('active')
+	})
+})
+
+//............. Fin Nav tabs .............
+
 let checkout = document.getElementById("checkout");
 let checdiv = document.getElementById("chec-div");
 let flag3 = false;

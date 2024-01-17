@@ -39,6 +39,8 @@
           class="hover:scale-125 text-violet-800 hover:text-orange-500 fa-solid fa-basket-shopping"></i></button>
     </div>
   </header>
+
+   <!------------------------------------------------- Botón de carrito --------------------------------------------------->
   <div
     class="w-full h-full bg-black dark:bg-gray-900 dark:bg-opacity-60  top-0 overflow-y-auto overflow-x-hidden fixed sticky-0 transition ease-in-out duration-200 hidden"
     id="chec-div">
@@ -167,32 +169,43 @@
       </style>
     </div>
   </div>
+  <!----------------------------------------------------- Main ----------------------------------------------------->
   <main>
     <!-- Filtro -->
     <div id="contenedorFilter">
       <label from="filter">
       <input type="text" name="buscador" id="filter" placeholder="Search"></input>
+      <link rel="stylesheet" href="style.css">
       </label>
     </div>
     <!-- Fin Filtro -->
 
     <!-- Páginas TABS -->
-    <ul class="list-reset flex border-b">
-      <li class="-mb-px mr-1">
-        <a class="bg-white inline-block border-l border-t border-r rounded-t py-2 px-4 text-blue-dark font-semibold" href="#">Active</a>
-      </li>
-      <li class="mr-1">
-        <a class="bg-white inline-block py-2 px-4 text-blue hover:text-blue-darker font-semibold" href="#">Tab</a>
-      </li>
-      <li class="mr-1">
-        <a class="bg-white inline-block py-2 px-4 text-blue hover:text-blue-darker font-semibold" href="#">Tab</a>
-      </li>
-      <li class="mr-1">
-        <a class="bg-white inline-block py-2 px-4 text-grey-light font-semibold" href="#">Tab</a>
-      </li>
-    </ul>
+    <div class="flex flex-col justify-center border-2 border-black">
+
+      <div class="flex flex-row justify-center gap-24">
+        <p class="border border-black w-32 py-8 text-center cursor-pointer" data-target="#pharmacy">Pharmacy</p>
+        <p class="border border-black w-32 py-8 text-center cursor-pointer" data-target="#toys">Toys</p>
+      </div>
+  
+      <div data-content id="pharmacy" class="active">
+        <h1>Pharmacy</h1>
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis architecto aperiam accusamus vitae possimus. Atque quam quibusdam nobis perferendis voluptate harum, sed aliquam illo! Suscipit!
+        </p>
+      </div>
+  
+      <div data-content id="toys">
+        <h1>Toys</h1>
+        <p>
+          toysLorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis architecto aperiam accusamus vitae possimus. Atque quam quibusdam nobis perferendis voluptate harum, sed aliquam illo! Suscipit!
+        </p>
+      </div>
+  
+    </div>
     <!-- Fin Páginas TABS -->
   </main>
+
   <footer >
     <div class="flex justify-between items-start bg-[#e37826] py-20 px-40">
     <div class="flex flex-col gap-10 content-center items-center ">
