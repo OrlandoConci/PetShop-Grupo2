@@ -13,7 +13,7 @@ await fetch(urlApi)
 
  console.log(products)
 
-// Filtro
+// ------------Filtro------------
 const $ingresoFilter = document.getElementById("filter")
 const $contenedorFilter = document.getElementById("contenedorFilter")
 
@@ -27,6 +27,7 @@ function busquedaTexto (products, textoIngresado) {
     return products.filter( articulo => articulo.producto.toLowerCase().includes(textoIngresado.toLowerCase()))
 }
  
+// ------------Fin Filtro------------
 
 let checkout = document.getElementById("checkout");
 let checdiv = document.getElementById("chec-div");
