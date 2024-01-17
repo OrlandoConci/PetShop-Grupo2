@@ -14,20 +14,41 @@ await fetch(urlApi)
  console.log(products)
 
 // ------------Filtro------------
-const $ingresoFilter = document.getElementById("filter")
+const $searchFilterInput = document.getElementById("filter")
 const $contenedorFilter = document.getElementById("contenedorFilter")
+const $priceRangeFilter = document.getElementById("priceRange")
+const $priceRangeOutput = document.getElementById("priceOutput")
 
-$ingresoFilter.addEventListener("input", (e) => {
-    let articulosFiltrados = busquedaTexto(products, e.target.value)
-    console.log(articulosFiltrados)
-    // crearArticles(articulosFiltrados, $contenedorFilter)
+$searchFilterInput.addEventListener("input", (e) => {
+    let filteredArticles = searchByText(products, e.target.value)
+
+    console.log(filterByPriceRange(filteredArticles, $priceRangeFilter.value));
+
 })
 
-function busquedaTexto (products, textoIngresado) {
-    return products.filter( articulo => articulo.producto.toLowerCase().includes(textoIngresado.toLowerCase()))
+function searchByText (products, $searchFilterInput) {
+    return products.filter( articulo => articulo.producto.toLowerCase().includes($searchFilterInput.toLowerCase()));
 }
- 
-// ------------Fin Filtro------------
+
+
+$priceRangeFilter.addEventListener("input", (e) => {
+    $priceRangeOutput.value = `up To: ${e.target.value}$`
+
+    let filteredArticles = searchByText(products, $searchFilterInput.value)
+
+    console.log(filterByPriceRange(filteredArticles, e.target.value));
+
+})
+
+function filterByPriceRange(filteredProducts, priceRange) {
+
+    console.log(priceRange);
+
+    return filteredProducts.filter(article => article.precio <= priceRange)
+} ;
+
+
+// ------------>Fin Filtro------------
 
 //............. Nav tabs .............
 
@@ -73,25 +94,25 @@ const dropdownMenu = document.getElementById('dropdown-menu');
 let isDropdownOpen = true;
 
 
-function toggleDropdown() {
-    isDropdownOpen = !isDropdownOpen;
-    if (isDropdownOpen) {
-        dropdownMenu.classList.remove('hidden');
-    } else {
-        dropdownMenu.classList.add('hidden');
-    }
-}
+// function toggleDropdown() {
+//     isDropdownOpen = !isDropdownOpen;
+//     if (isDropdownOpen) {
+//         dropdownMenu.classList.remove('hidden');
+//     } else {
+//         dropdownMenu.classList.add('hidden');
+//     }
+// }
 
 
-toggleDropdown();
+// toggleDropdown();
 
 
-dropdownButton.addEventListener('click', toggleDropdown);
+// dropdownButton.addEventListener('click', toggleDropdown);
 
 
-window.addEventListener('click', (event) => {
-    if (!dropdownButton.contains(event.target) && !dropdownMenu.contains(event.target)) {
-        dropdownMenu.classList.add('hidden');
-        isDropdownOpen = false;
-    }
-});
+// window.addEventListener('click', (event) => {
+//     if (!dropdownButton.contains(event.target) && !dropdownMenu.contains(event.target)) {
+//         dropdownMenu.classList.add('hidden');
+//         isDropdownOpen = false;
+//     }
+// });
