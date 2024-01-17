@@ -1,19 +1,238 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Home</title>
-  </head>
-  <body>
-    <header></header>
-    <main>
-      <div id="banner"></div>
-      <div id="description"></div>
-      <div id="text-support"></div>
-      <div id="products-featured"></div>
-    </main>
-    <footer></footer>
-    <script src="./assets/JS/index.js" type="module"></script>
-  </body>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <title>Home - PetsHome</title>
+</head>
+
+<body class="overflow-x-hidden">
+  <header class="flex justify-around border-b-4 border-orange-500">
+    <img class="w-80" src="./assets/img/logoPetshop.png" alt="logo Pets Shop">
+    <nav class="flex gap-10 align-middle items-center text-violet-900 font-bold text-3xl">
+      <a href="./index.html" class="underline decoration-orange-500">Home</a>
+      <!-- <div id="dropdown-button" class="relative inline-block">
+        <button class="group flex items-center hover:underline decoration-orange-500" aria-haspopup="true" aria-expanded="false" aria-hidden="true">
+          Shop
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 ml-2 -mr-1" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd"
+              d="M6.293 9.293a1 1 0 011.414 0L10 11.586l2.293-2.293a1 1 0 111.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z"
+              clip-rule="evenodd" />
+          </svg>
+        </button>
+        <div id="dropdown-menu" class="hidden absolute z-10 py-2 p-2 bg-white border rounded-md shadow-lg w-36" role="menu"
+          aria-orientation="vertical" aria-labelledby="dropdown-button">
+          <a href="./shop.html#prarmacy" class="flex rounded-md px-4 py-2 text-sm text-violet-800 hover:text-white hover:bg-violet-800 active:bg-blue-100 cursor-pointer"
+            role="menuitem">Pharmacy</a>
+          <a href="./shop.html#toys" class="flex rounded-md px-4 py-2 text-sm text-violet-800 hover:text-white hover:bg-violet-800 active:bg-blue-100 cursor-pointer"
+            role="menuitem">Pet's Toys</a>
+        </div>
+      </div>
+      </div> -->
+      <a class="hover:underline decoration-orange-500" href="./shop.html">Shop</a>
+      <a class="hover:underline decoration-orange-500" href="./contact.html">Contact us</a>
+    </nav>
+
+    <div class="flex items-center justify-center py-8">
+      <button onclick="checkoutHandler(true)" class="py-2 px-5 rounded text-2xl"><i
+          class="hover:scale-125 text-violet-800 hover:text-orange-500 fa-solid fa-basket-shopping"></i></button>
+    </div>
+  </header>
+  <div
+    class="w-full h-full bg-black dark:bg-gray-900 dark:bg-opacity-60  top-0 overflow-y-auto overflow-x-hidden fixed sticky-0 transition ease-in-out duration-200 hidden"
+    id="chec-div">
+    <div
+      class="w-full absolute z-10 right-0 h-full overflow-x-hidden transform translate-x-full transition bg-transparent ease-in-out duration-500"
+      id="checkout">
+      <div class="flex items-end lg:flex-row flex-col justify-end" id="cart">
+        <div
+          class="lg:w-1/4  md:w-8/12 w-full lg:px-8 lg:py-14 md:px-6 px-4 md:py-8 py-4 bg-white dark:bg-gray-800 overflow-y-hidden overflow-x-hidden lg:h-screen h-auto"
+          id="scroll">
+          <div class="flex items-center text-gray-500 hover:text-gray-600 dark:text-white cursor-pointer"
+            onclick="checkoutHandler(false)">
+            <img class="dark:hidden" src="https://tuk-cdn.s3.amazonaws.com/can-uploader/shopping-cart-1-svg1.svg"
+              alt="previous" />
+            <img class="dark:block hidden"
+              src="https://tuk-cdn.s3.amazonaws.com/can-uploader/shopping-cart-1-svg1dark.svg" alt="previous" />
+            <p class="text-sm pl-2 leading-none dark:hover:text-gray-200">Back</p>
+          </div>
+          <p class="lg:text-4xl text-3xl font-black leading-10 text-gray-800 dark:text-white pt-3">My Cart</p>
+          <div
+            class="flex flex-col max-w-md p-6 space-y-4 divide-y sm:w-96 sm:p-10 dark:divide-gray-700 dark:bg-gray-900 dark:text-gray-100">
+            <h2 class="text-2xl font-semibold">Order items</h2>
+            <ul class="flex flex-col pt-4 space-y-2">
+              <li class="flex items-start justify-between">
+                <h3>Hard taco, chicken
+                  <span class="text-sm dark:text-violet-400">x3</span>
+                </h3>
+                <div class="text-right">
+                  <span class="block">$7.50</span>
+                  <span class="text-sm dark:text-gray-400">à $2.50</span>
+                </div>
+              </li>
+              <li class="flex items-start justify-between">
+                <h3>Hard taco, beef
+                  <span class="text-sm dark:text-violet-400">x3</span>
+                </h3>
+                <div class="text-right">
+                  <span class="block">$8.25</span>
+                  <span class="text-sm dark:text-gray-400">à $2.75</span>
+                </div>
+              </li>
+              <li class="flex items-start justify-between">
+                <h3>Curly fries
+                  <span class="text-sm dark:text-violet-400">x1</span>
+                </h3>
+                <div class="text-right">
+                  <span class="block">$1.75</span>
+                  <span class="text-sm dark:text-gray-400">à $1.75</span>
+                </div>
+              </li>
+              <li class="flex items-start justify-between">
+                <h3>Large soda
+                  <span class="text-sm dark:text-violet-400">x2</span>
+                </h3>
+                <div class="text-right">
+                  <span class="block">$4.00</span>
+                  <span class="text-sm dark:text-gray-400">à $2.00</span>
+                </div>
+              </li>
+            </ul>
+            <div class="pt-4 space-y-2">
+              <div>
+                <div class="flex justify-between">
+                  <span>Subtotal</span>
+                  <span>$21.50</span>
+                </div>
+                <div class="flex items-center space-x-2 text-xs">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"
+                    class="w-3 h-3 mt-1 fill-current dark:text-violet-400">
+                    <path
+                      d="M485.887,263.261,248,25.373A31.791,31.791,0,0,0,225.373,16H64A48.055,48.055,0,0,0,16,64V225.078A32.115,32.115,0,0,0,26.091,248.4L279.152,486.125a23.815,23.815,0,0,0,16.41,6.51q.447,0,.9-.017a23.828,23.828,0,0,0,16.79-7.734L486.581,296.479A23.941,23.941,0,0,0,485.887,263.261ZM295.171,457.269,48,225.078V64A16.019,16.019,0,0,1,64,48H225.373L457.834,280.462Z">
+                    </path>
+                    <path
+                      d="M148,96a52,52,0,1,0,52,52A52.059,52.059,0,0,0,148,96Zm0,72a20,20,0,1,1,20-20A20.023,20.023,0,0,1,148,168Z">
+                    </path>
+                  </svg>
+                  <span class="dark:text-gray-400">Spend $20.00, get 20% off</span>
+                </div>
+              </div>
+              <div class="flex justify-between">
+                <span>Discount</span>
+                <span>-$4.30</span>
+              </div>
+            </div>
+            <div class="pt-4 space-y-2">
+              <div class="flex justify-between">
+                <span>Service fee</span>
+                <span>$0.50</span>
+              </div>
+              <div class="flex flex-col">
+                <div class="flex justify-between">
+                  <span>Delivery fee</span>
+                  <span>$4.00</span>
+                </div>
+                <a rel="noopener noreferrer" href="#" class="text-xs hover:underline dark:text-violet-400">How do our
+                  fees work?</a>
+              </div>
+              <div class="space-y-6">
+                <div class="flex justify-between">
+                  <span>Total</span>
+                  <span class="font-semibold">$22.70</span>
+                </div>
+                <button type="button"
+                  class="w-full py-2 font-semibold border rounded dark:bg-violet-400 dark:text-gray-900 dark:border-violet-400">Go
+                  to checkout</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <style>
+        /* width */
+        #scroll::-webkit-scrollbar {
+          width: 1px;
+        }
+
+        /* Track */
+        #scroll::-webkit-scrollbar-track {
+          background: #f1f1f1;
+        }
+
+        /* Handle */
+        #scroll::-webkit-scrollbar-thumb {
+          background: rgb(133, 132, 132);
+        }
+      </style>
+    </div>
+  </div>
+  <main>
+    <div class="w-screen" id="banner">
+      <img class="object-cover w-screen" src="./assets/img/petbanner.jpg" alt="perro feliz">
+    </div>
+    <div id="description" class="flex px-40 my-20 items-center   text-violet-700">
+      <section class="w-1/2 pr-5">
+        <h1 class="text-6xl font-bold mb-10  ">Welcome to PetsHome!</h1>
+        <p class="pr-24 mb-24 font-semibold">In PetsHome, we are passionate about taking care of your pets as much as
+          you do. We offer a wide
+          selection of pharmacy products and toys, all carefully chosen to ensure the happiness and health of your
+          four-legged friends.</p>
+        <a class="border-2 px-10 py-2 text-2xl font-bold bg-orange-500 text-white  hover:bg-violet-800 rounded-lg"
+          href="./shop.html"> ir a tienda</a>
+      </section>
+      <div class="">
+        <img src="./assets/img/Marca.jpg" alt="">
+      </div>
+    </div>
+    <div id="products-featured" class="bg-violet-700  ">
+      <img class="w-full" src="./assets/img/bannerProducts.jpg" alt="banner con perros y gatos">
+      <div class="h-80 text-center flex justify-center content-center w-full"> aqui van los productos</div>
+    </div>
+    <div id="text-support" class="my-40 ">
+      <h2 class="text-center text-4xl font-bold mb-5">In Pet Care Hub, quality is our priority</h2>
+      <p class="text-center px-80">We work with trusted brands and products that meet the highest standards. Because
+        your pets deserve the best, and we are here to provide it.</p>
+    </div>
+    
+  </main>
+  <footer >
+    <div class="flex justify-between items-start bg-[#e37826] py-20 px-40">
+    <div class="flex flex-col gap-10 content-center items-center ">
+      <img class="w-80" src="./assets/img/petshopPositivo.jpg" alt="logo">
+      <div class="text-2xl  flex gap-10 ">
+        <a href="https://instagram.com"><i class="fa-brands fa-instagram hover:text-violet-700 text-white"></i></a>
+        <a href="https://twitter.com"><i class="fa-brands fa-x-twitter hover:text-violet-700 text-white"></i></a>
+        <a href="https://tiktok.com"><i class="fa-brands fa-tiktok hover:text-violet-700 text-white"></i></a>
+      </div>
+    </div>
+    <div class="flex flex-col gap-10 text-violet-900">
+      <h3 class="font-bold text-3xl ">Quick Acces</h3>
+      <nav class="flex flex-col">
+        <a class="font-bold hover:text-white" href="./index.html">home</a>
+        <a class="font-bold hover:text-white" href="./shop.html"></a>
+        <a class="font-bold hover:text-white" href="./shop.html/#pharmacy">Pharmacy</a>
+        <a class="font-bold hover:text-white" href="./shop.html/#toys">Pet's Toys</a>
+        <a class="font-bold hover:text-white" href="./Contact">Contact Us</a>
+      </nav>
+    </div>
+    <div class="flex flex-col gap-10 text-violet-900">
+      <h3 class="font-bold text-3xl ">Contact Us</h3>
+      <ul>
+        <li><b>Address: </b>Paraguay 2334 5 F </li>
+        <li><b>Telephone: </b><a href="tel:5555501155"></a>555-550-1155</li>
+        <li><b>Email: </b><a href="mailto:contact@petshome.xyz">Contact@petshome.xyz</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="w-screen  py-5 bg-violet-800">
+    <p class="text-center text-white">Mindhub - Cohort 53</p>
+  </div>
+  </footer>
+  <script src="https://kit.fontawesome.com/1d67b26f86.js" crossorigin="anonymous"></script>
+  <script src="./assets/JS/index.js" type="module"></script>
+  <script src="./assets/JS/contact.js"></script>
+</body>
+
 </html>
