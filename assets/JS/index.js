@@ -101,7 +101,7 @@ function painCards(products){
   
       <h3 class="mt-4 text-lg font-medium text-gray-900">${products.producto}</h3>
   
-      <p class="mt-1.5 text-sm text-gray-700">$ ${products.precio.toLocaleString()}</p>
+      <p class="mt-1.5 text-sm text-gray-700">$ ${products.precio.toLocaleString( 'en-US', { style:'currency', currency:'USD' } )}</p>
       <p class="mt-1.5 text-sm text-gray-700 font-semibold">Stock: ${products.disponibles}</p>
       <p class="mt-1.5 text-sm ${text}">${disp}</p>
 
