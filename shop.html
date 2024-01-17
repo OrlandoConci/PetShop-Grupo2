@@ -5,14 +5,14 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <script src="https://cdn.tailwindcss.com"></script>
-  <title>Home - PetsHome</title>
+  <title>Shop - PetsHome</title>
 </head>
 
 <body class="overflow-x-hidden">
   <header class="flex justify-around border-b-4 border-orange-500">
     <img class="w-80" src="./assets/img/logoPetshop.png" alt="logo Pets Shop">
     <nav class="flex gap-10 align-middle items-center text-violet-900 font-bold text-3xl">
-      <a href="./index.html" class="underline decoration-orange-500 ">Home</a>
+      <a href="./index.html" class="hover:underline decoration-orange-500">Home</a>
       <div id="dropdown-button" class="relative inline-block">
         <button class="group flex items-center hover:underline decoration-orange-500" aria-haspopup="true" aria-expanded="false" aria-hidden="true">
           Shop
@@ -167,31 +167,13 @@
     </div>
   </div>
   <main>
-    <div class="w-screen" id="banner">
-      <img class="object-cover w-screen" src="./assets/img/petbanner.jpg" alt="perro feliz">
+    <div id="contenedorFilter">
+      <label from="filter">
+      <input type="text" name="buscador" id="filter" placeholder="Search"></input>
+      </label>
     </div>
-    <div id="description" class="flex px-40 my-20 items-center   text-violet-700">
-      <section class="w-1/2 pr-5">
-        <h1 class="text-6xl font-bold mb-10  ">Welcome to PetsHome!</h1>
-        <p class="pr-24 mb-24 font-semibold">In PetsHome, we are passionate about taking care of your pets as much as
-          you do. We offer a wide
-          selection of pharmacy products and toys, all carefully chosen to ensure the happiness and health of your
-          four-legged friends.</p>
-        <a class="border-2 px-10 py-2 text-2xl font-bold bg-orange-500 text-white  hover:bg-violet-800 rounded-lg"
-          href="./shop.html"> ir a tienda</a>
-      </section>
-      <div class="">
-        <img src="./assets/img/Marca.jpg" alt="">
-      </div>
-    </div>
-    <div id="products-featured" class="bg-violet-700  ">
-      <div class="h-80 text-center flex justify-center content-center w-full"> aqui van los productos</div>
-    </div>
-    <div id="text-support" class="my-40 ">
-      <h2 class="text-center text-4xl font-bold mb-5">In Pet Care Hub, quality is our priority</h2>
-      <p class="text-center px-80">We work with trusted brands and products that meet the highest standards. Because
-        your pets deserve the best, and we are here to provide it.</p>
-    </div>
+    <div id="pharmacy"></div>
+    <div id="toys"></div>
   </main>
   <footer >
     <div class="flex justify-between items-start bg-[#e37826] py-20 px-40">
