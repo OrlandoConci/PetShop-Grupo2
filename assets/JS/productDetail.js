@@ -15,9 +15,8 @@ await fetch(urlApi)
 })
 .catch(err => console.log(err));
 
- console.log(articulos)
 
-const articulo = articulos.find( articulo => articulo.id == id)
+const articulo = articulos.find( articulo => articulo._id == id)
 let disp = ""
 if (articulo.disponibles <= 5) {
     disp = "Últimas disponibles!" 

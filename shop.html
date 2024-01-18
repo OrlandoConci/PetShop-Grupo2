@@ -5,6 +5,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="style.css">
   <title>Shop - PetsHome</title>
 </head>
 
@@ -47,9 +48,11 @@
     <div
       class="w-full absolute z-10 right-0 h-full overflow-x-hidden transform translate-x-full transition bg-transparent ease-in-out duration-500"
       id="checkout">
+      <div class="absolute z-0 h-screen w-screen" onclick="checkoutHandler(false)" id="outsideCartBack">
+      </div>
       <div class="flex items-end lg:flex-row flex-col justify-end" id="cart">
         <div
-          class="lg:w-1/4  md:w-8/12 w-full lg:px-8 lg:py-14 md:px-6 px-4 md:py-8 py-4 bg-white dark:bg-gray-800 overflow-y-hidden overflow-x-hidden lg:h-screen h-auto"
+          class="z-30 lg:w-1/4  md:w-8/12 w-full lg:px-8 lg:py-14 md:px-6 px-4 md:py-8 py-4 bg-white dark:bg-gray-800 overflow-y-hidden overflow-x-hidden lg:h-screen h-auto"
           id="scroll">
           <div class="flex items-center text-gray-500 hover:text-gray-600 dark:text-white cursor-pointer"
             onclick="checkoutHandler(false)">
@@ -171,44 +174,31 @@
   </div>
   <!----------------------------------------------------- Main ----------------------------------------------------->
   <main>
-    <!-- Filtro -->
-    <div id="contenedorFilter">
-      <label from="filter">
-      <input type="text" name="buscador" id="filter" placeholder="Search"></input>
-
-      <label for="priceRange">Filter by Price Range:</label>
-      <input type="range" id="priceRange" name="priceRange" min="0" max="5000" step="100">
-      <output for="priceRange" id="priceOutput">up To: 5000$</output> 
-
-      <link rel="stylesheet" href="style.css">
-
-
-      </label>
-    </div>
-    <!-- Fin Filtro -->
 
     <!-- Páginas TABS -->
-    <div class="flex flex-col justify-center border-2 border-black">
+    <div id="divsContainer" class="flex flex-col">
 
       <div class="flex flex-row justify-center gap-24">
-        <p class="border border-black w-32 py-8 text-center cursor-pointer" data-target="#pharmacy">Pharmacy</p>
-        <p class="border border-black w-32 py-8 text-center cursor-pointer" data-target="#toys">Toys</p>
+        <p class="border border-black w-32 py-8 text-center cursor-pointer" id="farmacia">Pharmacy</p>
+        <p class="border border-black w-32 py-8 text-center cursor-pointer" id="jugueteria">Toys</p>
       </div>
-  
-      <div data-content id="pharmacy" class="active">
-        <h1>Pharmacy</h1>
-        <p id="contenedorPharmacy">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis architecto aperiam accusamus vitae possimus. Atque quam quibusdam nobis perferendis voluptate harum, sed aliquam illo! Suscipit!
-        </p>
+      
+      <div>
+        <div class="flex justify-center mt-11">
+          <label from="filter">
+            <input class="border" type="text" name="buscador" id="filter" placeholder="Search"></input>
+
+            <label for="priceRange">Filter by Price Range:</label>
+            <input type="range" id="priceRange" name="priceRange" value="5000" min="0" max="5000" step="100">
+            <output for="priceRange" id="priceOutput">up To: 5000$</output> 
+
+            <link rel="stylesheet" href="style.css">
+          </label>
+        </div>
+
+        <div id="contenedorCards" class="flex flex-wrap m-11 justify-center gap-11"></div>
       </div>
-  
-      <div data-content id="toys">
-        <h1>Toys</h1>
-        <p id="contenedorToys">
-          toysLorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis architecto aperiam accusamus vitae possimus. Atque quam quibusdam nobis perferendis voluptate harum, sed aliquam illo! Suscipit!
-        </p>
-      </div>
-  
+
     </div>
     <!-- Fin Páginas TABS -->
   </main>
@@ -248,6 +238,6 @@
 
   </footer>
   <script src="https://kit.fontawesome.com/1d67b26f86.js" crossorigin="anonymous"></script>
-  <script src="./assets/JS/index.js" type="module"></script>
+  <script type="module" src="./assets/JS/index.js"></script>
 </body>
 </html>
