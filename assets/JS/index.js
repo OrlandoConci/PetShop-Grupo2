@@ -11,6 +11,78 @@ await fetch(urlApi)
 })
 .catch(err => console.log(err));
 
+//............. Nav tabs .............
+
+mostrarContenido("farmacia")
+
+const $divsContainer = document.getElementById("divsContainer")
+$divsContainer.addEventListener("click", e => {
+    let categoria = ""
+    if (e.target.id == "farmacia") {
+        categoria = "farmacia"
+    } else if(e.target.id == "jugueteria"){
+        categoria = "jugueteria"
+    }
+    if (categoria != "") {
+        mostrarContenido(categoria)
+    }
+    
+})
+
+function mostrarContenido(categoria) {
+    const $contenedorCards = document.getElementById("contenedorCards")
+    $contenedorCards.innerHTML = ""
+    let arrayCategorias = products.filter(producto => producto.categoria == categoria)
+
+    renderCards(arrayCategorias, $contenedorCards)
+    filtrarArticulos(arrayCategorias, $contenedorCards)
+}
+
+//............. Fin Nav tabs .............
+
+// ------------Filtro------------
+
+function filtrarArticulos(arrayCategorias, contenedor) {
+    const $searchFilterInput = document.getElementById("filter")
+    const $priceRangeFilter = document.getElementById("priceRange")
+    const $priceRangeOutput = document.getElementById("priceOutput")
+
+    $searchFilterInput.addEventListener("input", (e) => {
+        let filteredArticles = searchByText(arrayCategorias, e.target.value)
+        let filteredRange = filterByPriceRange(filteredArticles, $priceRangeFilter.value);
+        if (filteredRange.length != 0) {
+            renderCards(filteredRange, contenedor)
+        } else {
+            contenedor.innerHTML = "<p class='text-center'>without results</p>"
+        }
+
+    })
+
+    $priceRangeFilter.addEventListener("input", (e) => {
+        $priceRangeOutput.value = `up To: ${e.target.value}$`
+    
+        let filteredArticles = searchByText(arrayCategorias, $searchFilterInput.value)
+        console.log("filteredArticles", filteredArticles)
+        let filteredRange = filterByPriceRange(filteredArticles, e.target.value);
+        console.log("filteredRange", filteredRange)
+        if (filteredRange.length != 0) {
+            renderCards(filteredRange, contenedor)
+        } else {
+            contenedor.innerHTML = "<p class='text-center'>without results</p>"
+        }
+    
+    })
+}
+
+function searchByText (products, $searchFilterInput) {
+    return products.filter( articulo => articulo.producto.toLowerCase().includes($searchFilterInput.toLowerCase()));
+}
+
+function filterByPriceRange(filteredProducts, priceRange) {
+    return filteredProducts.filter(article => article.precio <= priceRange)
+} ;
+
+// ------------Fin Filtro------------
 
 //------------- carrito -----------------
 
@@ -38,7 +110,7 @@ window.checkoutHandler = function () {
 
 //............. cards  .............
 function createCard(products){
-    let disp = ""
+    let disp = "."
     let text = ""
     let button =""
     if (products.disponibles == 0) {
@@ -64,8 +136,8 @@ function createCard(products){
         
             <h3 class="mt-4 text-lg font-medium text-gray-900">${products.producto}</h3>
         
-            <p class="mt-1.5 text-sm text-gray-700">$ ${products.precio.toLocaleString( 'en-US', { style:'currency', currency:'USD' } )}</p>
-            <p class="mt-1.5 text-sm text-gray-700 font-semibold">Stock: ${products.disponibles}</p>
+            <p class="mt-1.5 text-sm text-gray-700">${products.precio.toLocaleString( 'en-US', { style:'currency', currency:'USD' } )}</p>
+            <p class="mt-1.5 text-sm text-gray-700 font-semibold">Stock: ${products.disponibles} unidades.</p>
             <p class="mt-1.5 text-sm ${text}">${disp}</p>
 
             <button class="block w-full ${button} mt-4 rounded bg-[#e37826] p-4 text-sm font-medium transition hover:scale-[1.03]">Add to Cart</button>
@@ -73,21 +145,19 @@ function createCard(products){
     </div>`
 }
 
-export function renderCards(arrayReceived, $container){
+function renderCards(arrayReceived, $container){
     let acumulador = "";
-
     for (const product of arrayReceived){
         acumulador += createCard(product)
     }
-
-    $container.innerHTML += acumulador;
+    $container.innerHTML = acumulador;
 }
 
-//............. cards Home..............
+// ............. cards Home..............
 
 const $cardContainer = document.getElementById("cardContainer")
-const arrayCardsHome = products.filter(producto => producto.disponibles <= 5).slice(0, 5)
 console.log($cardContainer)
+const arrayCardsHome = products.filter(producto => producto.disponibles <= 5).slice(0, 5)
 renderCards(arrayCardsHome, $cardContainer)
 
 // dropdownButton.addEventListener('click', toggleDropdown);
