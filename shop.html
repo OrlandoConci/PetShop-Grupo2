@@ -14,23 +14,6 @@
     <img class="w-80" src="./assets/img/logoPetshop.png" alt="logo Pets Shop">
     <nav class="flex gap-10 align-middle items-center text-violet-900 font-bold text-3xl">
       <a href="./index.html" class="hover:underline decoration-orange-500">Home</a>
-      <!-- <div id="dropdown-button" class="relative inline-block">
-        <button class="group flex items-center hover:underline decoration-orange-500" aria-haspopup="true" aria-expanded="false" aria-hidden="true">
-          Shop
-          <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 ml-2 -mr-1" viewBox="0 0 20 20" fill="currentColor">
-            <path fill-rule="evenodd"
-              d="M6.293 9.293a1 1 0 011.414 0L10 11.586l2.293-2.293a1 1 0 111.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z"
-              clip-rule="evenodd" />
-          </svg>
-        </button>
-        <div id="dropdown-menu" class="hidden absolute z-10 py-2 p-2 bg-white border rounded-md shadow-lg w-36" role="menu"
-          aria-orientation="vertical" aria-labelledby="dropdown-button">
-          <a href="./shop.html#prarmacy" class="flex rounded-md px-4 py-2 text-sm text-violet-800 hover:text-white hover:bg-violet-800 active:bg-blue-100 cursor-pointer"
-            role="menuitem">Pharmacy</a>
-          <a href="./shop.html#toys" class="flex rounded-md px-4 py-2 text-sm text-violet-800 hover:text-white hover:bg-violet-800 active:bg-blue-100 cursor-pointer"
-            role="menuitem">Pet's Toys</a>
-        </div>
-      </div>  -->
       <a class="underline decoration-orange-500" href="./shop.html">Shop</a>
       <a class="hover:underline decoration-orange-500" href="./contact.html">Contact us</a>
     </nav>
@@ -41,7 +24,7 @@
     </div>
   </header>
 
-   <!------------------------------------------------- Botón de carrito --------------------------------------------------->
+  <!------------------------------------------------- Botón de carrito --------------------------------------------------->
   <div
     class="w-full h-full bg-black dark:bg-gray-900 dark:bg-opacity-60  top-0 overflow-y-auto overflow-x-hidden fixed sticky-0 transition ease-in-out duration-200 hidden"
     id="chec-div">
@@ -176,75 +159,86 @@
     <!-- Fin Filtro -->
 
     <!-- Páginas TABS -->
-    <div id="divsContainer" class="flex flex-col justify-center border-2 border-black">
+    <div class='flex mt-20 justify-center '>
+      <div class="mx-auto grid  w-full grid-cols-2 gap-x-5 px-8">
+        <div class="">
+          <input class="peer sr-only" type="radio" value="yes" name="answer" id="yes" checked />
+          <label
+            class="flex justify-center cursor-pointer rounded-full border border-gray-300 bg-white py-2 px-4 hover:bg-gray-50 focus:outline-none peer-checked:border-transparent peer-checked:ring-2 peer-checked:ring-indigo-500 transition-all duration-500 ease-in-out"
+            for="yes">Farmacia</label>
+          
+          <div  id="farmacia"
+            class="block  bg-white shadow-lg left-0 p-6 border mt-2 border-indigo-300 rounded-lg w-[95vw] mx-auto transition-all duration-500 ease-in-out translate-x-40 opacity-0 hidden peer-checked:opacity-100 peer-checked:block peer-checked:translate-x-1">
+            <label from="farmacia" class="flex gap-10 justify-center my-10 w-screen">
+              <input type="text" name="buscador" id="farmacia-search" placeholder="Search"/>
+              <label for="farmacia-priceRange">Filter by Price Range:</label>
+              <input type="range" id="farmacia-priceRange" name="farmacia-priceRange" min="0" max="5000" step="100">
+              <output for="farmacia-priceRange" id="farmacia-priceOutput">up To: 5000$</output> 
+            </label>
+            <div id="pharmacy" class="flex flex-wrap justify-center gap-10" ></div>
+          </div>
+        </div>
 
-      <div  class="flex flex-row justify-center gap-24">
-        <p class="border border-black w-32 py-8 text-center cursor-pointer" data-target="#farmacia">Pharmacy</p>
-        <p class="border border-black w-32 py-8 text-center cursor-pointer" data-target="#jugueteria">Toys</p>
+        <div class="">
+          <input class="peer sr-only" type="radio" value="no" name="answer" id="no" />
+          <label
+            class="flex justify-center cursor-pointer rounded-full border border-gray-300 bg-white py-2 px-4 hover:bg-gray-50 focus:outline-none peer-checked:border-transparent peer-checked:ring-2 peer-checked:ring-indigo-500 transition-all duration-500 ease-in-out"
+            for="no">Jugueteria</label>
+
+          <div id="jugueteria"
+            class="hidden w-[95vw] relative left-[-98vh] bg-white shadow-lg left-0 p-6 border mt-2 border-indigo-300 rounded-lg mx-auto transition-all duration-500 ease-in-out translate-x-40 opacity-0  peer-checked:opacity-100 peer-checked:block peer-checked:translate-x-1">
+            <label from="jugueteria" class="flex gap-10 justify-center my-10 w-screen">
+              <input type="text" name="buscador" id="jugueteria-search" placeholder="Search"/>
+              <label for="jugueteria-priceRange">Filter by Price Range:</label>
+              <input type="range" id="jugueteria-priceRange" name="jugueteria-priceRange" min="0" max="5000" step="100">
+              <output for="jugueteria-priceRange" id="jugueteria-priceOutput">up To: 5000$</output> 
+          </label>
+          <div id="toys" class="flex flex-wrap justify-center gap-10 w-screen"></div>
+          </div>
+        </div>
       </div>
-  
-      <div data-content id="farmacia" class="active">
-        <h1>Pharmacy</h1>
-
-        <div id="contenedorPharmacy">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis architecto aperiam accusamus vitae possimus. Atque quam quibusdam nobis perferendis voluptate harum, sed aliquam illo! Suscipit!
-        </div>
-
-        <div id="cardsContainer">
-
-        </div>
-      </div>
-
-      <div data-content id="jugueteria">
-        <h1>Toys</h1>
-        <div id="contenedorToys">
-          toysLorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis architecto aperiam accusamus vitae possimus. Atque quam quibusdam nobis perferendis voluptate harum, sed aliquam illo! Suscipit!
-        </div>
-
-        <div id="cardsContainer">
-
-        </div>
-      </div>
-  
     </div>
+
+
     <!-- Fin Páginas TABS -->
   </main>
 
-  <footer >
+  <footer>
     <div class="flex justify-between items-start bg-[#e37826] py-20 px-40">
-    <div class="flex flex-col gap-10 content-center items-center ">
-      <img class="w-80" src="./assets/img/petshopPositivo.jpg" alt="logo">
-      <div class="text-2xl  flex gap-10 ">
-        <a href="https://instagram.com"><i class="fa-brands fa-instagram hover:text-violet-700 text-white"></i></a>
-        <a href="https://twitter.com"><i class="fa-brands fa-x-twitter hover:text-violet-700 text-white"></i></a>
-        <a href="https://tiktok.com"><i class="fa-brands fa-tiktok hover:text-violet-700 text-white"></i></a>
+      <div class="flex flex-col gap-10 content-center items-center ">
+        <img class="w-80" src="./assets/img/petshopPositivo.jpg" alt="logo">
+        <div class="text-2xl  flex gap-10 ">
+          <a href="https://instagram.com"><i class="fa-brands fa-instagram hover:text-violet-700 text-white"></i></a>
+          <a href="https://twitter.com"><i class="fa-brands fa-x-twitter hover:text-violet-700 text-white"></i></a>
+          <a href="https://tiktok.com"><i class="fa-brands fa-tiktok hover:text-violet-700 text-white"></i></a>
+        </div>
+      </div>
+      <div class="flex flex-col gap-10 text-violet-900">
+        <h3 class="font-bold text-3xl ">Quick Acces</h3>
+        <nav class="flex flex-col">
+          <a class="font-bold hover:text-white" href="./index.html">home</a>
+          <a class="font-bold hover:text-white" href="./shop.html"></a>
+          <a class="font-bold hover:text-white" href="./shop.html/#pharmacy">Pharmacy</a>
+          <a class="font-bold hover:text-white" href="./shop.html/#toys">Pet's Toys</a>
+          <a class="font-bold hover:text-white" href="./Contact">Contact Us</a>
+        </nav>
+      </div>
+      <div class="flex flex-col gap-10 text-violet-900">
+        <h3 class="font-bold text-3xl ">Contact Us</h3>
+        <ul>
+          <li><b>Address: </b>Paraguay 2334 5 F </li>
+          <li><b>Telephone: </b><a href="tel:5555501155"></a>555-550-1155</li>
+          <li><b>Email: </b><a href="mailto:contact@petshome.xyz">Contact@petshome.xyz</a></li>
+        </ul>
       </div>
     </div>
-    <div class="flex flex-col gap-10 text-violet-900">
-      <h3 class="font-bold text-3xl ">Quick Acces</h3>
-      <nav class="flex flex-col">
-        <a class="font-bold hover:text-white" href="./index.html">home</a>
-        <a class="font-bold hover:text-white" href="./shop.html"></a>
-        <a class="font-bold hover:text-white" href="./shop.html/#pharmacy">Pharmacy</a>
-        <a class="font-bold hover:text-white" href="./shop.html/#toys">Pet's Toys</a>
-        <a class="font-bold hover:text-white" href="./Contact">Contact Us</a>
-      </nav>
+    <div class="w-screen  py-5 bg-violet-800">
+      <p class="text-center text-white">Mindhub - Cohort 53</p>
     </div>
-    <div class="flex flex-col gap-10 text-violet-900">
-      <h3 class="font-bold text-3xl ">Contact Us</h3>
-      <ul>
-        <li><b>Address: </b>Paraguay 2334 5 F </li>
-        <li><b>Telephone: </b><a href="tel:5555501155"></a>555-550-1155</li>
-        <li><b>Email: </b><a href="mailto:contact@petshome.xyz">Contact@petshome.xyz</a></li>
-      </ul>
-    </div>
-  </div>
-  <div class="w-screen  py-5 bg-violet-800">
-    <p class="text-center text-white">Mindhub - Cohort 53</p>
-  </div>
 
   </footer>
   <script src="https://kit.fontawesome.com/1d67b26f86.js" crossorigin="anonymous"></script>
   <script src="./assets/JS/index.js" type="module"></script>
 </body>
+
 </html>
