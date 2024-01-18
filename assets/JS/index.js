@@ -60,15 +60,13 @@ targets.forEach(target => {
 
 		const t = document.querySelector(target.dataset.target)
 		t.classList.add('active')
+        mostrarContenido(t)
 	}) 
 
 });
 
-const isActive = document.querySelector(".active")
-
-if (isActive) {
-    const auxDiv = document.getElementById("cardsContainer")
-    const filteredProducts = products.filter(producto => producto.categoria == isActive.id)
+function mostrarContenido(contenedorActivo) {
+    const filteredProducts = products.filter(producto => producto.categoria == contenedorActivo.id)
 
     let divFilter = document.createElement("div");
 
@@ -85,15 +83,12 @@ if (isActive) {
     <link rel="stylesheet" href="style.css">
     </label>
     `
-    divFilter.innerHTML+= filterToAdd;
+    divFilter.innerHTML = filterToAdd;
 
-    isActive.appendChild(divFilter);
+    contenedorActivo.appendChild(divFilter);
 
-    renderCards(filteredProducts, auxDiv)
-    
+    renderCards(filteredProducts, contenedorActivo)
 }
-
-
 
 //............. Fin Nav tabs .............
 
@@ -132,37 +127,28 @@ function createCard(products){
         text = "text-orange-500 font-bold"
         disp = "Últimas disponibles!" 
     }
-    return `<a href="#" class="group relative block overflow-hidden border border-gray-300  rounded-2xl bg-orange-100">
-   
-    </button>
-    <div class="w-[350px]">
-        <img
-        src="${products.imagen}"
-        alt=""
-        class="h-64 w-full object-cover transition duration-500 group-hover:scale-105 sm:h-72"
-        />
-    </div>
-  
-    <div class="relative  bg-orange-100 p-6">
-      <a href="./productDetail.html?${products._id}" class="bg-[#e37826] whitespace-nowrap  px-3 py-1.5 text-xs font-medium"> Mas Info </a">
-  
-      <h3 class="mt-4 text-lg font-medium text-gray-900">${products.producto}</h3>
-  
-      <p class="mt-1.5 text-sm text-gray-700">$ ${products.precio.toLocaleString( 'en-US', { style:'currency', currency:'USD' } )}</p>
-      <p class="mt-1.5 text-sm text-gray-700 font-semibold">Stock: ${products.disponibles}</p>
-      <p class="mt-1.5 text-sm ${text}">${disp}</p>
+    return `
+    <div class="flex flex-col bg-orange-100 rounded w-[350px] max-h-[650px] border-2 border-orange-100">
+        <div class="w-full">
+            <img
+            src="${products.imagen}"
+            alt=""
+            class="h-64 w-full object-cover transition duration-500 group-hover:scale-105 sm:h-72"
+            />
+        </div>
+    
+        <div class="p-6 w-full">
+            <a href="./productDetail.html?id=${products._id}" class="bg-[#e37826] whitespace-nowrap  px-3 py-1.5 text-xs font-medium"> Mas Info </a>
+        
+            <h3 class="mt-4 text-lg font-medium text-gray-900">${products.producto}</h3>
+        
+            <p class="mt-1.5 text-sm text-gray-700">$ ${products.precio.toLocaleString( 'en-US', { style:'currency', currency:'USD' } )}</p>
+            <p class="mt-1.5 text-sm text-gray-700 font-semibold">Stock: ${products.disponibles}</p>
+            <p class="mt-1.5 text-sm ${text}">${disp}</p>
 
-
-  
-      <form class="mt-4">
-        <button
-          class="block w-full ${button} rounded bg-[#e37826] p-4 text-sm font-medium transition hover:scale-[1.03]"
-        >
-          Add to Cart
-        </button>
-      </form>
-    </div>
-  </a>`
+            <button class="block w-full ${button} mt-4 rounded bg-[#e37826] p-4 text-sm font-medium transition hover:scale-[1.03]">Add to Cart</button>
+        </div>
+    </div>`
 }
 
 function renderCards(arrayReceived, $containerDiv){
@@ -176,10 +162,15 @@ function renderCards(arrayReceived, $containerDiv){
         crearCards += createCard(product)
     }
 
-    $containerCards.innerHTML = crearCards;    
+    $containerCards.innerHTML += crearCards;    
 }
 
-
+//............. cards Home..............
+const $cardContainer = document.getElementById("cardContainer")
+console.log($cardContainer)
+const arrayCardsHome = products.filter(producto => producto.disponibles <= 5).slice(0, 5)
+console.log(arrayCardsHome)
+renderCards(arrayCardsHome, $cardContainer)
 
 
 // dropdownButton.addEventListener('click', toggleDropdown);
