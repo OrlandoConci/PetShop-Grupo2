@@ -4,12 +4,12 @@ const urlApi = "https://moviestack.onrender.com/api/petshop";
 export let products = [];
 
 await fetch(urlApi)
-.then(response => response.json())
-.then(data => {
-    products = data;
-    return products;
-})
-.catch(err => console.log(err));
+    .then(response => response.json())
+    .then(data => {
+        products = data;
+        return products;
+    })
+    .catch(err => console.log(err));
 
 //............. Nav tabs .............
 
@@ -20,17 +20,25 @@ $divsContainer.addEventListener("click", e => {
     let categoria = ""
     if (e.target.id == "farmacia") {
         categoria = "farmacia"
-    } else if(e.target.id == "jugueteria"){
+    } else if (e.target.id == "jugueteria") {
         categoria = "jugueteria"
     }
     if (categoria != "") {
         mostrarContenido(categoria)
     }
-    
+
 })
 
 function mostrarContenido(categoria) {
     const $contenedorCards = document.getElementById("contenedorCards")
+    const $searchFilterInput = document.getElementById("filter")
+    const $priceRangeFilter = document.getElementById("priceRange")
+    const $priceRangeOutput = document.getElementById("priceOutput")
+
+    $searchFilterInput.value = "";
+    $priceRangeFilter.value = 5000;
+    $priceRangeOutput.value = `up to: ${$priceRangeFilter.value}`
+
     $contenedorCards.innerHTML = ""
     let arrayCategorias = products.filter(producto => producto.categoria == categoria)
 
@@ -60,7 +68,7 @@ function filtrarArticulos(arrayCategorias, contenedor) {
 
     $priceRangeFilter.addEventListener("input", (e) => {
         $priceRangeOutput.value = `up To: ${e.target.value}$`
-    
+
         let filteredArticles = searchByText(arrayCategorias, $searchFilterInput.value)
         console.log("filteredArticles", filteredArticles)
         let filteredRange = filterByPriceRange(filteredArticles, e.target.value);
@@ -68,19 +76,19 @@ function filtrarArticulos(arrayCategorias, contenedor) {
         if (filteredRange.length != 0) {
             renderCards(filteredRange, contenedor)
         } else {
-            contenedor.innerHTML = "<p class='text-center'>without results</p>"
+            contenedor.innerHTML = "<p class='text-center text-gray-600 font-bold text-2xl'>without results</p>"
         }
-    
+
     })
 }
 
-function searchByText (products, $searchFilterInput) {
-    return products.filter( articulo => articulo.producto.toLowerCase().includes($searchFilterInput.toLowerCase()));
+function searchByText(products, $searchFilterInput) {
+    return products.filter(articulo => articulo.producto.toLowerCase().includes($searchFilterInput.toLowerCase()));
 }
 
 function filterByPriceRange(filteredProducts, priceRange) {
     return filteredProducts.filter(article => article.precio <= priceRange)
-} ;
+};
 
 // ------------Fin Filtro------------
 
@@ -102,24 +110,24 @@ window.checkoutHandler = function () {
         setTimeout(function () {
             checkout.classList.remove("translate-x-full");
             checkout.classList.add("translate-x-0");
-        }, 300);
+        }, 100);
         checdiv.classList.remove("hidden");
         flag3 = false;
     }
 };
 
 //............. cards  .............
-function createCard(products){
+function createCard(products) {
     let disp = "."
     let text = ""
-    let button =""
+    let button = ""
     if (products.disponibles == 0) {
         text = "text-red-500 font-bold"
         disp = "No hay stock!"
         button = "hidden"
-    }else if(products.disponibles <= 5){
+    } else if (products.disponibles <= 5) {
         text = "text-orange-500 font-bold"
-        disp = "Últimas disponibles!" 
+        disp = "Últimas disponibles!"
     }
     return `
     <div class="flex flex-col bg-orange-100 rounded w-[350px] max-h-[650px] border-2 border-orange-100">
@@ -136,7 +144,7 @@ function createCard(products){
         
             <h3 class="mt-4 text-lg font-medium text-gray-900">${products.producto}</h3>
         
-            <p class="mt-1.5 text-sm text-gray-700">${products.precio.toLocaleString( 'en-US', { style:'currency', currency:'USD' } )}</p>
+            <p class="mt-1.5 text-sm text-gray-700">${products.precio.toLocaleString('en-US', { style: 'currency', currency: 'USD' })}</p>
             <p class="mt-1.5 text-sm text-gray-700 font-semibold">Stock: ${products.disponibles} unidades.</p>
             <p class="mt-1.5 text-sm ${text}">${disp}</p>
 
@@ -145,9 +153,9 @@ function createCard(products){
     </div>`
 }
 
-function renderCards(arrayReceived, $container){
+function renderCards(arrayReceived, $container) {
     let acumulador = "";
-    for (const product of arrayReceived){
+    for (const product of arrayReceived) {
         acumulador += createCard(product)
     }
     $container.innerHTML = acumulador;
