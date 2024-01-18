@@ -31,6 +31,7 @@ else if (articulo.disponibles <= 5) {
 }
 
 $productOnly.innerHTML = `
+
 <article class = "flex flex-col bg-orange-100 m-20 w-[600px] border text-gray-700 rounded-2xl shadow-2xl border-solid">
     <img class = "rounded-2xl h-[500px] w-full" src="${articulo.imagen} alt="Imágen ilustrativa de ${articulo.producto} ">
     <h1 class = "text-3xl text-center font-bold m-5 justify-center">${articulo.producto}</h1>
@@ -41,6 +42,8 @@ $productOnly.innerHTML = `
             <p class = "${cambioColor}">${disp}</p>
         </div>
     </div>
-    <p class = "m-3">${articulo.descripcion}
-</article>`
+    <p class = "text-lg m-3">${articulo.descripcion}
+</article>
+
+`
 

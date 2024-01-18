@@ -33,7 +33,7 @@ window.checkoutHandler = function () {
         setTimeout(function () {
             checkout.classList.remove("translate-x-full");
             checkout.classList.add("translate-x-0");
-        }, 300);
+        }, 100);
         checdiv.classList.remove("hidden");
         flag3 = false;
     }
@@ -47,18 +47,24 @@ function createCard(products) {
     let text = "";
     let button = "";
     let inputMax = `max="${products.disponibles}"`;
+    let isOnStock = "";
+    let marginStock = "ml-4";
 
     if (products.disponibles == 0) {
         text = "text-red-500 font-bold";
         disp = "No hay stock!";
         button = "hidden";
         inputMax = "disabled";
+        isOnStock = "hidden";
+        marginStock = ""
+
+
     } else if (products.disponibles <= 5) {
         text = "text-orange-500 font-bold";
         disp = "Últimas disponibles!";
     }
 
-    return `<article href="#" class="group relative block overflow-hidden border border-gray-300  rounded-2xl bg-orange-100">
+    return `<article href="#" class="group relative block overflow-hidden border border-gray-300 rounded-2xl bg-orange-100">
         <div class="w-[350px]">
             <img src="${products.imagen}" alt="" class="h-64 w-full object-cover transition duration-500 group-hover:scale-105 sm:h-72" />
         </div>
@@ -69,13 +75,15 @@ function createCard(products) {
             <h3 class="mt-4 text-lg font-medium text-gray-900">${products.producto}</h3>
 
             <p class="mt-1.5 text-sm text-gray-700">$ ${products.precio.toLocaleString()}</p>
-            <p class="mt-1.5 text-sm text-gray-700 font-semibold">Stock: ${products.disponibles}</p>
-            <p class="mt-1.5 text-sm ${text}">${disp}</p>
+            <div class="flex w-[100%]"> 
+            <p class="${button} mt-1.5 text-sm text-gray-700 font-semibold">Stock: ${products.disponibles} </p>
+            <p class="mt-1.5 text-sm ${text} ${marginStock}">${disp}</p>
+            </div>
 
             <div class="mt-4">
             <div class="form-container">
-            <label for="quantity">Cantidad:</label>
-            <input type="number" id="quantity" name="quantity" min="1" ${inputMax} value="1" class="quantity-input" />
+            <label class="${button}"for="quantity">Cantidad:</label>
+            <input type="number" id="quantity" name="quantity" min="1" ${inputMax} value="1" class="${isOnStock} quantity-input mb-2 h-fit border rounded pl-1 w-10" />
             <button data-add-to-cart="${products._id}" class="block w-full ${button} text-white rounded bg-[#e37826] p-4 text-sm font-medium transition hover:scale-[1.03]">
                 Add to Cart
             </button>
@@ -85,23 +93,24 @@ function createCard(products) {
 }
 
 
-//---Productos Home
-function getRandomIndex(min, max) {
-    return Math.floor(Math.random() * (max - min + 1)) + min;
-}
-function renderRandomProducts(products, containerId) {
-    const container = document.getElementById(containerId);
-    const randomProducts = Array.from({ length: 4 }, () => {
-        const randomIndex = getRandomIndex(0, products.length - 1);
-        return products[randomIndex];
-    });
-    container.innerHTML = '';
-    randomProducts.forEach(product => {
-        const productCard = document.createElement('div');
-        productCard.innerHTML = createCard(product);
-        container.appendChild(productCard);
-    });
-}
+//---Productos Home >>>>> deprecated
+
+// function getRandomIndex(min, max) {
+//     return Math.floor(Math.random() * (max - min + 1)) + min;
+// }
+// function renderRandomProducts(products, containerId) {
+//     const container = document.getElementById(containerId);
+//     const randomProducts = Array.from({ length: 4 }, () => {
+//         const randomIndex = getRandomIndex(0, products.length - 1);
+//         return products[randomIndex];
+//     });
+//     container.innerHTML = '';
+//     randomProducts.forEach(product => {
+//         const productCard = document.createElement('div');
+//         productCard.innerHTML = createCard(product);
+//         container.appendChild(productCard);
+//     });
+// }
 
 
 //----Renderizar productos en tienda----///
