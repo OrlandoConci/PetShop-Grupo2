@@ -286,7 +286,3 @@ const initialCart = JSON.parse(localStorage.getItem('cart')) || [];
 
 renderCartProducts(initialCart);
 updateCartValues(initialCart);
-
-
-renderRandomProducts(products, 'cardContainer');
-

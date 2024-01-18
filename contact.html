@@ -5,18 +5,24 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="style.css">
   <title>Home - PetsHome</title>
 </head>
 
 <body class="overflow-x-hidden">
   <header class="flex justify-around border-b-4 border-orange-500">
-    <img class="w-80" src="./assets/img/logoPetshop.png" alt="logo Pets Shop">
-    <nav class="flex gap-10 align-middle items-center text-violet-900 font-bold text-3xl">
-      <a href="./index.html" class="">Home</a>
+    <img class="w-80 max-[768px]:h-24 max-[768px]:w-auto max-[425px]:w-2/6 max-[425px]:object-contain" src="./assets/img/logoPetshop.png" alt="logo Pets Shop">
+    <nav class="flex gap-10 align-middle items-center text-violet-900 font-bold text-3xl max-[768px]:text-2xl max-[768px]:gap-5 max-[425px]:text-sm max-[425px]:gap-3 max-[425px]:ml-3">
+      <a href="./index.html" class="underline decoration-orange-500">Home</a>
       <a class="hover:underline decoration-orange-500" href="./shop.html">Shop</a>
-      <a class="hover:underline decoration-orange-500 underline decoration-orange-500" href="./contact.html">Contact
-        us</a>
+      <a class="hover:underline decoration-orange-500 max-[425px]:text-center" href="./contact.html">Contact us</a>
     </nav>
+
+    <!-- <div class="flex items-center justify-center py-8 max-[425px]:py-0">
+      <button onclick="checkoutHandler(true)" class="py-2 px-5 rounded text-2xl max-[425px]:py-0 max-[425px]:px-1 max-[425px]:text-[20px]"><i
+          class="hover:scale-125 text-violet-800 hover:text-orange-500 fa-solid fa-basket-shopping"></i></button>
+    </div> -->
+  </header>
 
 
   </header>
@@ -54,17 +60,17 @@
   </main>
 
   <footer>
-    <div class="flex justify-between items-start bg-[#e37826] py-20 px-40">
-      <div class="flex flex-col gap-10 content-center items-center ">
-        <img class="w-80" src="./assets/img/petshopPositivo.jpg" alt="logo">
-        <div class="text-2xl  flex gap-10 ">
+    <div class="flex justify-between items-start bg-[#e37826] py-20 px-40 max-[1024px]:h-[200px] max-[1024px]:py-5 max-[1024px]:px-10 max-[425px]:px-1 max-[425px]:h-[150px]">
+      <div class="flex flex-col gap-10 content-center items-center max-[768px]:w-60 max-[425px]:m-0 max-[425px]:p-0 max-[425px]:gap-3 ">
+        <img class="w-80 max-[425px]:w-[150px]" src="./assets/img/petshopPositivo.jpg" alt="logo">
+        <div class="text-2xl  flex gap-10 max-[425px]:gap-5 max-[425px]:text-lg max-[425px]:gap-1">
           <a href="https://instagram.com"><i class="fa-brands fa-instagram hover:text-violet-700 text-white"></i></a>
           <a href="https://twitter.com"><i class="fa-brands fa-x-twitter hover:text-violet-700 text-white"></i></a>
           <a href="https://tiktok.com"><i class="fa-brands fa-tiktok hover:text-violet-700 text-white"></i></a>
         </div>
       </div>
-      <div class="flex flex-col gap-10 text-violet-900">
-        <h3 class="font-bold text-3xl ">Quick Acceshyye</h3>
+      <div class="flex flex-col gap-10 text-violet-900 max-[768px]:gap-5 max-[425px]:hidden">
+        <h3 class="font-bold text-3xl max-[768px]:text-2xl">Quick Acces</h3>
         <nav class="flex flex-col">
           <a class="font-bold hover:text-white" href="./index.html">home</a>
           <a class="font-bold hover:text-white" href="./shop.html"></a>
@@ -73,19 +79,20 @@
           <a class="font-bold hover:text-white" href="./Contact">Contact Us</a>
         </nav>
       </div>
-      <div class="flex flex-col gap-10 text-violet-900">
-        <h3 class="font-bold text-3xl ">Contact Us</h3>
-        <ul>
+      <div class="flex flex-col gap-10 text-violet-900 max-[425px]:gap-3 max-[425px]:h-[10px]">
+        <h3 class="font-bold text-3xl max-[768px]:text-2xl max-[425px]:text-xl max-[425px]:m-0 max-[425px]:p-0 max-[425px]:ml-1 max-[375px]:text-lg max-[375px]:hidden">Contact Us</h3>
+        <ul class="max-[425px]:text-sm max-[425px]:ml-1 max-[375px]:mr-4">
           <li><b>Address: </b>Paraguay 2334 5 F </li>
           <li><b>Telephone: </b><a href="tel:5555501155"></a>555-550-1155</li>
           <li><b>Email: </b><a href="mailto:contact@petshome.xyz">Contact@petshome.xyz</a></li>
         </ul>
       </div>
     </div>
-    <div class="w-screen  py-5 bg-violet-800">
+    <div class="w-screen  py-5 bg-violet-800 max-[768px]:py-2">
       <p class="text-center text-white">Mindhub - Cohort 53</p>
     </div>
   </footer>
+
   <script src="https://kit.fontawesome.com/1d67b26f86.js" crossorigin="anonymous"></script>
   <script src="./assets/JS/contact.js"></script>
 

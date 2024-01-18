@@ -5,41 +5,25 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="style.css">
   <title>Home - PetsHome</title>
 </head>
 
 <body class="overflow-x-hidden">
   <header class="flex justify-around border-b-4 border-orange-500">
-    <img class="w-80" src="./assets/img/logoPetshop.png" alt="logo Pets Shop">
-    <nav class="flex gap-10 align-middle items-center text-violet-900 font-bold text-3xl">
+    <img class="w-80 max-[768px]:h-24 max-[768px]:w-auto max-[425px]:w-2/6 max-[425px]:object-contain" src="./assets/img/logoPetshop.png" alt="logo Pets Shop">
+    <nav class="flex gap-10 align-middle items-center text-violet-900 font-bold text-3xl max-[768px]:text-2xl max-[768px]:gap-5 max-[425px]:text-sm max-[425px]:gap-3 max-[425px]:ml-3">
       <a href="./index.html" class="underline decoration-orange-500">Home</a>
-      <!-- <div id="dropdown-button" class="relative inline-block">
-        <button class="group flex items-center hover:underline decoration-orange-500" aria-haspopup="true" aria-expanded="false" aria-hidden="true">
-          Shop
-          <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 ml-2 -mr-1" viewBox="0 0 20 20" fill="currentColor">
-            <path fill-rule="evenodd"
-              d="M6.293 9.293a1 1 0 011.414 0L10 11.586l2.293-2.293a1 1 0 111.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z"
-              clip-rule="evenodd" />
-          </svg>
-        </button>
-        <div id="dropdown-menu" class="hidden absolute z-10 py-2 p-2 bg-white border rounded-md shadow-lg w-36" role="menu"
-          aria-orientation="vertical" aria-labelledby="dropdown-button">
-          <a href="./shop.html#prarmacy" class="flex rounded-md px-4 py-2 text-sm text-violet-800 hover:text-white hover:bg-violet-800 active:bg-blue-100 cursor-pointer"
-            role="menuitem">Pharmacy</a>
-          <a href="./shop.html#toys" class="flex rounded-md px-4 py-2 text-sm text-violet-800 hover:text-white hover:bg-violet-800 active:bg-blue-100 cursor-pointer"
-            role="menuitem">Pet's Toys</a>
-        </div>
-      </div>
-      </div> -->
       <a class="hover:underline decoration-orange-500" href="./shop.html">Shop</a>
-      <a class="hover:underline decoration-orange-500" href="./contact.html">Contact us</a>
+      <a class="hover:underline decoration-orange-500 max-[425px]:text-center" href="./contact.html">Contact us</a>
     </nav>
 
-    <div class="flex items-center justify-center py-8">
-      <button onclick="checkoutHandler(true)" class="py-2 px-5 rounded text-2xl"><i
+    <div class="flex items-center justify-center py-8 max-[425px]:py-0">
+      <button onclick="checkoutHandler(true)" class="py-2 px-5 rounded text-2xl max-[425px]:py-0 max-[425px]:px-1 max-[425px]:text-[20px]"><i
           class="hover:scale-125 text-violet-800 hover:text-orange-500 fa-solid fa-basket-shopping"></i></button>
     </div>
   </header>
+
   <div
     class="w-full h-full bg-black dark:bg-gray-900 dark:bg-opacity-60  top-0 overflow-y-auto overflow-x-hidden fixed sticky-0 transition ease-in-out duration-200 hidden z-50"
     id="chec-div">
@@ -104,47 +88,48 @@
       </style>
     </div>
   </div>
+
   <main>
     <div class="w-screen" id="banner">
-      <img class="object-cover w-screen" src="./assets/img/petbanner.jpg" alt="perro feliz">
+      <img class="object-cover w-screen max-[425px]:mb-11" src="./assets/img/petbanner.jpg" alt="perro feliz">
     </div>
-    <div id="description" class="flex px-40 my-20 items-center   text-violet-700">
-      <section class="w-1/2 pr-5">
-        <h1 class="text-6xl font-bold mb-10  ">Welcome to PetsHome!</h1>
-        <p class="pr-24 mb-24 font-semibold">In PetsHome, we are passionate about taking care of your pets as much as
+    <div id="description" class="flex px-40 my-20 items-center text-violet-700 max-[768px]:my-5 max-[768px]:justify-between max-[768px]:px-10 max-[425px]:h-[200px] max-[425px]:p-0 ">
+      <section class="w-1/2 pr-5 max-[1024px]:flex max-[1024px]:flex-col max-[1024px]:justify-center max-[768px]:w-3/4 max-[425px]:m-3 ">
+        <h1 class="text-6xl font-bold mb-10 max-[1024px]:text-4xl max-[1024px]:mb-5 max-[1024px]:text-center max-[768px]:text-2xl max-[425px]:text-base max-[425px]:m-1">Welcome to PetsHome!</h1>
+        <p class="pr-24 mb-24 font-semibold max-[1024px]:mb-5 max-[1024px]:text-center max-[1024px]:pr-0 max-[425px]:text-sm max-[425px]:m-0">In PetsHome, we are passionate about taking care of your pets as much as
           you do. We offer a wide
           selection of pharmacy products and toys, all carefully chosen to ensure the happiness and health of your
           four-legged friends.</p>
-        <a class="border-2 px-10 py-2 text-2xl font-bold bg-orange-500 text-white  hover:bg-violet-800 rounded-lg"
+        <a class="border-2 px-10 py-2 text-2xl font-bold bg-orange-500 text-white hover:bg-violet-800 rounded-lg max-[1024px]:text-center max-[768px]:text-2xl max-[425px]:w-auto max-[425px]:h-auto max-[425px]:px-0 max-[425px]:py-0 max-[425px]:text-sm max-[425px]:m-0"
           href="./shop.html"> ir a tienda</a>
       </section>
-      <div class="">
-        <img src="./assets/img/wolcome.jpg" alt="">
+      <div class="max-[768px]:w-1/2">
+        <img class="max-[768px]:auto" src="./assets/img/wolcome.jpg" alt="">
       </div>
     </div>
     <div id="products-featured" class="">
-      <img class="w-full" src="./assets/img/bannerProducts.jpg" alt="banner con perros y gatos">
+      <img class="w-full max-[425px]:mt-11" src="./assets/img/bannerProducts.jpg" alt="banner con perros y gatos">
 
     </div>
-    <div id="text-support" class="my-40 ">
-      <h2 class="text-center text-4xl font-bold mb-5">In Pet Care Hub, quality is our priority</h2>
-      <p class="text-center px-80">We work with trusted brands and products that meet the highest standards. Because
+    <div id="text-support" class="my-40 max-[1024px]:my-16 max-[768px]:my-5 max-[768px]:w-full">
+      <h2 class="text-center text-4xl font-bold mb-5 max-[768px]:text-2xl max-[768px]:mt-11 max-[425px]:text-lg">In Pet Care Hub, quality is our priority</h2>
+      <p class="text-center px-80 max-[768px]:w-full max-[768px]:px-10 max-[768px]:mb-11 max-[425px]:text-base">We work with trusted brands and products that meet the highest standards. Because
         your pets deserve the best, and we are here to provide it.</p>
     </div>
 
   </main>
   <footer>
-    <div class="flex justify-between items-start bg-[#e37826] py-20 px-40">
-      <div class="flex flex-col gap-10 content-center items-center ">
-        <img class="w-80" src="./assets/img/petshopPositivo.jpg" alt="logo">
-        <div class="text-2xl  flex gap-10 ">
+    <div class="flex justify-between items-start bg-[#e37826] py-20 px-40 max-[1024px]:h-[200px] max-[1024px]:py-5 max-[1024px]:px-10 max-[425px]:px-1 max-[425px]:h-[150px]">
+      <div class="flex flex-col gap-10 content-center items-center max-[768px]:w-60 max-[425px]:m-0 max-[425px]:p-0 max-[425px]:gap-3 ">
+        <img class="w-80 max-[425px]:w-[150px]" src="./assets/img/petshopPositivo.jpg" alt="logo">
+        <div class="text-2xl  flex gap-10 max-[425px]:gap-5 max-[425px]:text-lg max-[425px]:gap-1">
           <a href="https://instagram.com"><i class="fa-brands fa-instagram hover:text-violet-700 text-white"></i></a>
           <a href="https://twitter.com"><i class="fa-brands fa-x-twitter hover:text-violet-700 text-white"></i></a>
           <a href="https://tiktok.com"><i class="fa-brands fa-tiktok hover:text-violet-700 text-white"></i></a>
         </div>
       </div>
-      <div class="flex flex-col gap-10 text-violet-900">
-        <h3 class="font-bold text-3xl ">Quick Acces</h3>
+      <div class="flex flex-col gap-10 text-violet-900 max-[768px]:gap-5 max-[425px]:hidden">
+        <h3 class="font-bold text-3xl max-[768px]:text-2xl">Quick Acces</h3>
         <nav class="flex flex-col">
           <a class="font-bold hover:text-white" href="./index.html">home</a>
           <a class="font-bold hover:text-white" href="./shop.html"></a>
@@ -153,19 +138,20 @@
           <a class="font-bold hover:text-white" href="./Contact">Contact Us</a>
         </nav>
       </div>
-      <div class="flex flex-col gap-10 text-violet-900">
-        <h3 class="font-bold text-3xl ">Contact Us</h3>
-        <ul>
+      <div class="flex flex-col gap-10 text-violet-900 max-[425px]:gap-3 max-[425px]:h-[10px]">
+        <h3 class="font-bold text-3xl max-[768px]:text-2xl max-[425px]:text-xl max-[425px]:m-0 max-[425px]:p-0 max-[425px]:ml-1 max-[375px]:text-lg max-[375px]:hidden">Contact Us</h3>
+        <ul class="max-[425px]:text-sm max-[425px]:ml-1 max-[375px]:mr-4">
           <li><b>Address: </b>Paraguay 2334 5 F </li>
           <li><b>Telephone: </b><a href="tel:5555501155"></a>555-550-1155</li>
           <li><b>Email: </b><a href="mailto:contact@petshome.xyz">Contact@petshome.xyz</a></li>
         </ul>
       </div>
     </div>
-    <div class="w-screen  py-5 bg-violet-800">
+    <div class="w-screen  py-5 bg-violet-800 max-[768px]:py-2">
       <p class="text-center text-white">Mindhub - Cohort 53</p>
     </div>
   </footer>
+
   <script src="https://kit.fontawesome.com/1d67b26f86.js" crossorigin="anonymous"></script>
   <script src="./assets/JS/index.js" type="module"></script>
 </body>
