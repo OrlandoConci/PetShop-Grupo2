@@ -14,18 +14,36 @@ await fetch(urlApi)
  console.log(products)
 
 // ------------Filtro------------
-const $ingresoFilter = document.getElementById("filter")
-const $contenedorFilter = document.getElementById("contenedorFilter")
+// const $searchFilterInput = document.getElementById("filter")
+// const $priceRangeFilter = document.getElementById("priceRange")
+// const $priceRangeOutput = document.getElementById("priceOutput")
 
-// $ingresoFilter.addEventListener("input", (e) => {
-//     let articulosFiltrados = busquedaTexto(products, e.target.value)
-//     console.log(articulosFiltrados)
-//     // crearArticles(articulosFiltrados, $contenedorFilter)
+// $searchFilterInput.addEventListener("input", (e) => {
+//     let filteredArticles = searchByText(products, e.target.value)
+
+//     console.log(filterByPriceRange(filteredArticles, $priceRangeFilter.value));
+
 // })
 
-function busquedaTexto (products, textoIngresado) {
-    return products.filter( articulo => articulo.producto.toLowerCase().includes(textoIngresado.toLowerCase()))
-}
+// function searchByText (products, $searchFilterInput) {
+//     return products.filter( articulo => articulo.producto.toLowerCase().includes($searchFilterInput.toLowerCase()));
+// }
+
+// $priceRangeFilter.addEventListener("input", (e) => {
+//     $priceRangeOutput.value = `up To: ${e.target.value}$`
+
+//     let filteredArticles = searchByText(products, $searchFilterInput.value)
+
+//     console.log(filterByPriceRange(filteredArticles, e.target.value));
+
+// })
+
+// function filterByPriceRange(filteredProducts, priceRange) {
+
+//     console.log(priceRange);
+
+//     return filteredProducts.filter(article => article.precio <= priceRange)
+// } ;
 
 // ------------Fin Filtro------------
 
@@ -39,10 +57,43 @@ targets.forEach(target => {
 		content.forEach(c => {
 			c.classList.remove('active')
 		})
+
 		const t = document.querySelector(target.dataset.target)
 		t.classList.add('active')
-	})
-})
+	}) 
+
+});
+
+const isActive = document.querySelector(".active")
+
+if (isActive) {
+    const auxDiv = document.getElementById("cardsContainer")
+    const filteredProducts = products.filter(producto => producto.categoria == isActive.id)
+
+    let divFilter = document.createElement("div");
+
+    divFilter.setAttribute("id", "contenedorFilter")
+
+    const filterToAdd = `
+    <label from="filter">
+    <input type="text" name="buscador" id="filter" placeholder="Search"></input>
+
+    <label for="priceRange">Filter by Price Range:</label>
+    <input type="range" id="priceRange" name="priceRange" min="0" max="5000" step="100">
+    <output for="priceRange" id="priceOutput">up To: 5000$</output> 
+
+    <link rel="stylesheet" href="style.css">
+    </label>
+    `
+    divFilter.innerHTML+= filterToAdd;
+
+    isActive.appendChild(divFilter);
+
+    renderCards(filteredProducts, auxDiv)
+    
+}
+
+
 
 //............. Fin Nav tabs .............
 
@@ -69,11 +120,7 @@ window.checkoutHandler = function () {
 };
 
 //............. cards  .............
-
-let arrayPharmacy = products.filter(producto => producto.categoria == "farmacia")
-console.log(arrayPharmacy)
-
-function painCards(products){
+function createCard(products){
     let disp = ""
     let text = ""
     let button =""
@@ -97,7 +144,7 @@ function painCards(products){
     </div>
   
     <div class="relative  bg-orange-100 p-6">
-      <button class="bg-[#e37826] whitespace-nowrap  px-3 py-1.5 text-xs font-medium"> Mas Info </button>
+      <a href="./productDetail.html?${products._id}" class="bg-[#e37826] whitespace-nowrap  px-3 py-1.5 text-xs font-medium"> Mas Info </a">
   
       <h3 class="mt-4 text-lg font-medium text-gray-900">${products.producto}</h3>
   
@@ -118,25 +165,29 @@ function painCards(products){
   </a>`
 }
 
-function dataCard(products){
-    const $containerCards = document.getElementById('cardContainer')
+function renderCards(arrayReceived, $containerDiv){
+    let $containerCards = $containerDiv;
 
-    let crearCards = ""
-    for (const product of products){
-        crearCards += painCards(product)
+    $containerCards.innerHTML = "";
+
+    let crearCards = "";
+
+    for (const product of arrayReceived){
+        crearCards += createCard(product)
     }
-    $containerCards.innerHTML = crearCards
-    
+
+    $containerCards.innerHTML = crearCards;    
 }
-dataCard(products)
 
 
-dropdownButton.addEventListener('click', toggleDropdown);
 
 
-window.addEventListener('click', (event) => {
-    if (!dropdownButton.contains(event.target) && !dropdownMenu.contains(event.target)) {
-        dropdownMenu.classList.add('hidden');
-        isDropdownOpen = false;
-    }
-});
+// dropdownButton.addEventListener('click', toggleDropdown);
+
+
+// window.addEventListener('click', (event) => {
+//     if (!dropdownButton.contains(event.target) && !dropdownMenu.contains(event.target)) {
+//         dropdownMenu.classList.add('hidden');
+//         isDropdownOpen = false;
+//     }
+// });

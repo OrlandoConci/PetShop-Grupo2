@@ -173,34 +173,37 @@
   <!----------------------------------------------------- Main ----------------------------------------------------->
   <main>
     <!-- Filtro -->
-    <div id="contenedorFilter">
-      <label from="filter">
-      <input type="text" name="buscador" id="filter" placeholder="Search"></input>
-      <link rel="stylesheet" href="style.css">
-      </label>
-    </div>
     <!-- Fin Filtro -->
 
     <!-- Páginas TABS -->
-    <div class="flex flex-col justify-center border-2 border-black">
+    <div id="divsContainer" class="flex flex-col justify-center border-2 border-black">
 
-      <div class="flex flex-row justify-center gap-24">
-        <p class="border border-black w-32 py-8 text-center cursor-pointer" data-target="#pharmacy">Pharmacy</p>
-        <p class="border border-black w-32 py-8 text-center cursor-pointer" data-target="#toys">Toys</p>
+      <div  class="flex flex-row justify-center gap-24">
+        <p class="border border-black w-32 py-8 text-center cursor-pointer" data-target="#farmacia">Pharmacy</p>
+        <p class="border border-black w-32 py-8 text-center cursor-pointer" data-target="#jugueteria">Toys</p>
       </div>
   
-      <div data-content id="pharmacy" class="active">
+      <div data-content id="farmacia" class="active">
         <h1>Pharmacy</h1>
-        <p id="contenedorPharmacy">
+
+        <div id="contenedorPharmacy">
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis architecto aperiam accusamus vitae possimus. Atque quam quibusdam nobis perferendis voluptate harum, sed aliquam illo! Suscipit!
-        </p>
+        </div>
+
+        <div id="cardsContainer">
+
+        </div>
       </div>
-  
-      <div data-content id="toys">
+
+      <div data-content id="jugueteria">
         <h1>Toys</h1>
-        <p id="contenedorToys">
+        <div id="contenedorToys">
           toysLorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis architecto aperiam accusamus vitae possimus. Atque quam quibusdam nobis perferendis voluptate harum, sed aliquam illo! Suscipit!
-        </p>
+        </div>
+
+        <div id="cardsContainer">
+
+        </div>
       </div>
   
     </div>
