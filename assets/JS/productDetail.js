@@ -15,7 +15,6 @@ await fetch(urlApi)
 })
 .catch(err => console.log(err));
 
- console.log(articulos)
 
 const articulo = articulos.find( articulo => articulo._id == id)
 let disp = ""
