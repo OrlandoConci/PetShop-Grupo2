@@ -19,21 +19,28 @@ await fetch(urlApi)
 
 const articulo = articulos.find( articulo => articulo.id == id)
 let disp = ""
-if (articulo.disponibles <= 5) {
+let cambioColor = ""
+
+if (articulo.disponibles == 0) {
+    cambioColor = "italic font-bold text-red-500"
+    disp = "No hay stock!"
+}  
+else if (articulo.disponibles <= 5) {
+    cambioColor = "italic font-bold text-orange-500"
     disp = "Últimas disponibles!" 
-} 
+}
 
 $productOnly.innerHTML = `
-<article>
-    <img src="${articulo.imagen} alt="Imágen ilustratica de un/a ">
-    <h1>${articulo.producto}</h1>
-    <div>
-        <p>${articulo.precio.toLocaleString( 'en-US', { style:'currency', currency:'USD' } )}</p>
-        <div>
-            <p>Stock: ${articulo.disponibles}</p>
-            <p>${disp}</p>
+<article class = "flex flex-col bg-orange-100 m-20 w-[600px] border text-gray-700 rounded-2xl shadow-2xl border-solid">
+    <img class = "rounded-2xl h-[500px] w-full" src="${articulo.imagen} alt="Imágen ilustrativa de ${articulo.producto} ">
+    <h1 class = "text-3xl text-center font-bold m-5 justify-center">${articulo.producto}</h1>
+    <div class = "">
+        <p class = "m-3"><span class = "font-bold">Coste: </span>${articulo.precio.toLocaleString( 'en-US', { style:'currency', currency:'USD' } )}</p>
+        <div class = "m-3">
+            <p><span class = "font-bold">Stock: </span>${articulo.disponibles}</p>
+            <p class = "${cambioColor}">${disp}</p>
         </div>
     </div>
-    <p>${articulo.descripcion}
+    <p class = "m-3">${articulo.descripcion}
 </article>`
 
